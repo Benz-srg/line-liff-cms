@@ -25,6 +25,9 @@ import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import ButtomSubmit from "@/components/ButtonSubmit";
 import Snackbars from "@/components/Snackbar";
+import Loading from "@/components/Loading";
+
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -69,6 +72,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 const HistoryId = ({ id }) => {
   const classes = useStyles();
+  const router = useRouter();
   const dispatch = useDispatch();
   const historyReducer = useSelector((state: any) => state.history);
   const [formEditTacking, setFormEditTacking] = useState(false);
@@ -91,6 +95,11 @@ const HistoryId = ({ id }) => {
     if (shipping.shippingName == "" && shipping.tackingNo == "")
       return alert("กรุณากรอก");
     dispatch(historyActions.editTrackingNo(shipping));
+  };
+
+  const handleDestroy = () => {
+    dispatch(historyActions.destroy());
+    router.push({ pathname: `/cms/history` });
   };
 
   useEffect(() => {
@@ -127,6 +136,7 @@ const HistoryId = ({ id }) => {
   return (
     <Layout>
       <Paper className={classes.root}>
+        <Loading open={historyReducer.isLoading} />
         <Snackbars
           open={openSnackbar}
           handleCloseSnakbar={setOpenSnackbar}
@@ -137,7 +147,9 @@ const HistoryId = ({ id }) => {
           <Grid item xs={12}>
             <div className={classes.boxHeader}>
               <div>
-                <ButtonBack />
+                <Button onClick={() => handleDestroy()}>
+                  <ArrowBackIcon /> กลับ
+                </Button>
               </div>
               <div>
                 {historyReducer.histories.length > 0 ? (
@@ -237,33 +249,34 @@ const HistoryId = ({ id }) => {
             ""
           )}
           <Grid item xs={12}>
-            {historyReducer.histories.length > 0
-              ? historyReducer.histories.map(
-                  ({ shippingAddress, customerId }) => (
-                    <React.Fragment key={customerId._id}>
-                      <Grid container spacing={1}>
-                        <Grid item xs={12}>
-                          <div>
-                            <Typography variant="body1" gutterBottom>
-                              ที่อยู่จัดส่ง
-                            </Typography>
-                            <TextField
-                              fullWidth
-                              variant="outlined"
-                              value={` ${customerId.fullName} ${"\n"} ${
-                                customerId.tel
-                              } ${"\n"} ${shippingAddress.shippingAddress}`}
-                              multiline
-                              rows={4}
-                              inputProps={{ readOnly: true }}
-                            />
-                          </div>
-                        </Grid>
-                      </Grid>
-                    </React.Fragment>
-                  )
-                )
-              : ""}
+            {historyReducer.histories.length > 0 ? (
+              <Grid container spacing={1}>
+                <Grid item xs={12}>
+                  <div>
+                    <Typography variant="body1" gutterBottom>
+                      ที่อยู่จัดส่ง
+                    </Typography>
+                    <TextField
+                      fullWidth
+                      variant="outlined"
+                      value={` ${
+                        historyReducer.histories[0].customerId.fullName
+                      } ${"\n"} ${
+                        historyReducer.histories[0].customerId.tel
+                      } ${"\n"} ${
+                        historyReducer.histories[0].shippingAddress
+                          .shippingAddress
+                      }`}
+                      multiline
+                      rows={4}
+                      inputProps={{ readOnly: true }}
+                    />
+                  </div>
+                </Grid>
+              </Grid>
+            ) : (
+              ""
+            )}
           </Grid>
           <Grid item xs={12}>
             <TableContainer component={Paper}>

@@ -144,13 +144,6 @@ export default function FormCoupon({
 
   const handleSubmit = () => {
     if (title !== "แก้ไขคูปอง") {
-      /* _id: "",
-      code: "",
-      percentSale: 0,
-      priceSale: 0,
-      couponLimit: 0,
-      productAvaliable: [],
-      action: 0, */
       if (couponObject.code == "") {
         return alert("กรุณากรอกรหัสคูปอง");
       } else if (couponObject.percentSale < 0) {
@@ -236,24 +229,6 @@ export default function FormCoupon({
               <option value={1}>เปิด</option>
             </Select>
           </FormControl>
-          {/* <TextField
-            required={true}
-            autoFocus
-            margin="dense"
-            id="percentSale"
-            label="ส่วนลดเปอเซ็นต์"
-            type="number"
-            fullWidth
-            autoComplete="off"
-            variant="outlined"
-            value={couponObject.percentSale}
-            onChange={(e: React.ChangeEvent<{ value: unknown }>) =>
-              handleSetobjectId({
-                ...couponObject,
-                percentSale: e.target.value,
-              })
-            }
-          /> */}
           <TextField
             required={true}
             autoFocus
@@ -286,9 +261,16 @@ export default function FormCoupon({
               input={<Input id="select-multiple-chip" />}
               renderValue={(selected) => (
                 <div className={classes.chips}>
-                  {(selected as string[]).map((value) => (
-                    <Chip key={value} label={value} className={classes.chip} />
-                  ))}
+                  {(selected as string[]).map((value) => {
+                    const val = products.find((item) => value == item._id);
+                    return (
+                      <Chip
+                        key={value}
+                        label={val ? val.title : value}
+                        className={classes.chip}
+                      />
+                    );
+                  })}
                 </div>
               )}
               MenuProps={MenuProps}

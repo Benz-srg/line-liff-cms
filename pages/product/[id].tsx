@@ -212,12 +212,12 @@ const ProductId = ({ id }) => {
                     <div className={classes.boxVariation}>
                       {/* fetch size */}
                       <div>
-                        {product.size.length > 0
-                          ? product.size.map((row, index) => (
-                              <React.Fragment>
-                                <Typography variant="h5" gutterBottom>
-                                  Size, color
-                                </Typography>
+                        <React.Fragment>
+                          <Typography variant="h5" gutterBottom>
+                            ประเภทของสินค้า
+                          </Typography>
+                          {product.size.length > 0
+                            ? product.size.map((row, index) => (
                                 <Button
                                   key={index}
                                   variant={
@@ -229,9 +229,9 @@ const ProductId = ({ id }) => {
                                 >
                                   {row}
                                 </Button>
-                              </React.Fragment>
-                            ))
-                          : ""}
+                              ))
+                            : ""}
+                        </React.Fragment>
                       </div>
                       <div className={classes.boxQuantity}>
                         <div>

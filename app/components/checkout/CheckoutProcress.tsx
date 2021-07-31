@@ -111,7 +111,7 @@ const CheckoutProcress = ({
       Swal.fire({
         icon: "error",
         text: "กรุณาเลือกธนาคาร!",
-        confirmButtonText:'ตกลง'
+        confirmButtonText: "ตกลง",
       });
       return;
     }
@@ -130,6 +130,7 @@ const CheckoutProcress = ({
       orderStatus: 0,
       paidStatus: 0,
       code: couponCode,
+      slip: "",
     };
     console.log(reqCreateOrder);
     dispatch(orderActions.createOrder(reqCreateOrder, router));

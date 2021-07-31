@@ -123,7 +123,7 @@ const OrderId = ({ id }) => {
               </div>
             </div>
           </Grid>
-          {orders.orders[0].slip ? (
+          {orders.orders.length > 0 ? (
             <Grid item xs={12} className={classes.slipButton}>
               <SlipModal orderId={id} imgURL={orders.orders[0].slip} />
             </Grid>
@@ -166,46 +166,46 @@ const OrderId = ({ id }) => {
             </div>
           </Grid>
           <Grid item xs={12}>
-            {orders.orders.length > 0
-              ? orders.orders.map(({ shippingAddress, customerId, note }) => (
-                  <React.Fragment key={customerId._id}>
-                    <Grid container spacing={1}>
-                      <Grid item xs={3}>
-                        <div>
-                          <Typography variant="body1" gutterBottom>
-                            หมายเหตุ
-                          </Typography>
-                          <TextField
-                            fullWidth
-                            variant="outlined"
-                            value={note}
-                            multiline
-                            rows={4}
-                            inputProps={{ readOnly: true }}
-                          />
-                        </div>
-                      </Grid>
-                      <Grid item xs={9}>
-                        <div>
-                          <Typography variant="body1" gutterBottom>
-                            ที่อยู่จัดส่ง
-                          </Typography>
-                          <TextField
-                            fullWidth
-                            variant="outlined"
-                            value={` ${customerId.fullName} ${"\n"} ${
-                              customerId.tel
-                            } ${"\n"} ${shippingAddress.shippingAddress}`}
-                            multiline
-                            rows={4}
-                            inputProps={{ readOnly: true }}
-                          />
-                        </div>
-                      </Grid>
-                    </Grid>
-                  </React.Fragment>
-                ))
-              : ""}
+            {orders.orders.length > 0 ? (
+              <Grid container spacing={1}>
+                <Grid item xs={3}>
+                  <div>
+                    <Typography variant="body1" gutterBottom>
+                      หมายเหตุ
+                    </Typography>
+                    <TextField
+                      fullWidth
+                      variant="outlined"
+                      value={orders.orders[0].note}
+                      multiline
+                      rows={4}
+                      inputProps={{ readOnly: true }}
+                    />
+                  </div>
+                </Grid>
+                <Grid item xs={9}>
+                  <div>
+                    <Typography variant="body1" gutterBottom>
+                      ที่อยู่จัดส่ง
+                    </Typography>
+                    <TextField
+                      fullWidth
+                      variant="outlined"
+                      value={` ${
+                        orders.orders[0].customerId.fullName
+                      } ${"\n"} ${orders.orders[0].customerId.tel} ${"\n"} ${
+                        orders.orders[0].shippingAddress.shippingAddress
+                      }`}
+                      multiline
+                      rows={4}
+                      inputProps={{ readOnly: true }}
+                    />
+                  </div>
+                </Grid>
+              </Grid>
+            ) : (
+              ""
+            )}
           </Grid>
           <Grid item xs={12}>
             <TableContainer component={Paper}>

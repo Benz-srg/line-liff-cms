@@ -206,7 +206,7 @@ export default function PersistentDrawerLeft({ children }) {
             className={classes.iconMene}
           ></Typography>
           <Typography variant="body1" component="p">
-            Hi, {/* {authAdmin.user.fullName} */}
+           {/* {authAdmin.user.fullName} */}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -222,9 +222,9 @@ export default function PersistentDrawerLeft({ children }) {
           <div className={classes.titleStore}>
             <Avatar
               alt="Cindy Baker"
-              src="https://pht.qoo-static.com/LG2FwWONiUvcePpMJHhoxqPqg5eCT12VAKl2809iTUmvPiH9bC9YvYDsoq_nRkCk54w=w300"
+              src="/firstshoplogo08.png"
             />
-            <Typography>KAKAO WEBTOON</Typography>
+            <Typography>FIRST SHOP</Typography>
           </div>
         </div>
         <Divider />

@@ -6,7 +6,6 @@ import CardContent from '@material-ui/core/CardContent';
 import * as shippingActions from "@/actions/shipping.action";
 import Typography from '@material-ui/core/Typography';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import { numberWithCommas } from "@/utils/service";
 import {
   createStyles,
   makeStyles,
@@ -63,7 +62,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     root: {
       minWidth: 275,
-      marginTop: theme.spacing(3),
     },
     bullet: {
       display: 'inline-block',
@@ -140,6 +138,11 @@ export default function ManageShippingCost(shippingcost: Prop) {
   }, [shippingcost]);
   return (
     <div>
+      <Button color="primary"
+        variant="contained" onClick={handleClickOpen}>
+        เพิ่มบทความ
+      </Button>
+
       <Card className={classes.root} variant="outlined">
         <CardContent>
           <Typography variant="h5" component="h2">

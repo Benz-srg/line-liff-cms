@@ -10,6 +10,7 @@ export enum historiesActiontype {
   UPLOADING_HISTORIES_ERROR = "UPLOADING_HISTORIES_ERROR",
   UPLOADING_HISTORIES_SUCCESS = "UPLOADING_HISTORIES_SUCCESS",
   VISIBLE_SNACKBAR_HISTORIES = "VISIBLE_SNACKBAR_HISTORIES",
+  HISTORIES_DESTROY = "HISTORIES_DESTROY",
 }
 
 interface historiesActionInterface {
@@ -17,10 +18,20 @@ interface historiesActionInterface {
   payload: any;
 }
 
+export const destroy = () => {
+  return (dispatch) => {
+    const isDestroy: historiesActionInterface = {
+      type: historiesActiontype.HISTORIES_DESTROY,
+      payload: null,
+    };
+    dispatch(isDestroy);
+  };
+};
+
 export const feedHistoriesSuccess = () => {
   return async (dispatch) => {
     try {
-      dispatch(setStateToisLoading);
+      setStateToisLoading(dispatch);
       const histories = await axios.get(`${urlApi}history/type/1`);
       const { status, history } = await histories.data;
       if (status == 200) {
@@ -37,7 +48,7 @@ export const feedHistoriesSuccess = () => {
 export const feedHistoriesCancel = () => {
   return async (dispatch) => {
     try {
-      dispatch(setStateToisLoading);
+      setStateToisLoading(dispatch);
       const histories = await axios.get(`${urlApi}history/type/4`);
       const { status, history } = await histories.data;
       if (status == 200) {
@@ -58,7 +69,7 @@ export const feedHistoriesWithTypeAndDate = (
 ) => {
   return async (dispatch) => {
     try {
-      dispatch(setStateToisLoading);
+      setStateToisLoading(dispatch);
       const histories = await axios.get(
         `${urlApi}history/search/${type}/${dateStartIso}/${dateEndIso}`
       );
@@ -77,6 +88,7 @@ export const feedHistoriesWithTypeAndDate = (
 export const feedHistoriesWithId = (id: string) => {
   return async (dispatch) => {
     try {
+      setStateToisLoading(dispatch);
       const historie = await axios.get(`${urlApi}history/${id}`);
       const { status, history } = await historie.data;
       setStateToisLoadingSuccess(dispatch, history);
@@ -110,10 +122,9 @@ interface Shipping {
 export const editTrackingNo = (shipping: Shipping) => {
   return async (dispatch) => {
     setStateToupLoading(dispatch);
-    const upload = await axios.put(
-      `${urlApi}history/shipping/${shipping.id}`,
-      { ...shipping }
-    );
+    const upload = await axios.put(`${urlApi}history/shipping/${shipping.id}`, {
+      ...shipping,
+    });
     const { message, status, history } = await upload.data;
     setStateToupLoadingSuccess(dispatch, { message, status, history });
   };

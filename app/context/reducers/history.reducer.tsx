@@ -72,6 +72,12 @@ const historiesReducer = (state = initalState, action) => {
         histories: action.payload.history,
       };
 
+    case historiesActiontype.HISTORIES_DESTROY:
+      return {
+        ...state,
+        histories:[]
+      }
+
     default:
       return state;
   }
