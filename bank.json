@@ -1,0 +1,15 @@
+[
+  { "bankId": "1", "bankName": "กรุงเทพ", "code": "bbl" },
+  { "bankId": "2", "bankName": "กรุงศรีอยุธยา", "code": "bay" },
+  { "bankId": "3", "bankName": "กสิกรไทย", "code": "kbank" },
+  { "bankId": "4", "bankName": "ทหารไทย", "code": "tmb" },
+  { "bankId": "5", "bankName": "ไทยพาณิชย์", "code": "scb" },
+  { "bankId": "6", "bankName": "กรุงไทย", "code": "ktb" },
+  { "bankId": "7", "bankName": "ธนชาต", "code": "tbank" },
+  { "bankId": "8", "bankName": "ยูโอบี", "code": "uob" },
+  { "bankId": "9", "bankName": "สแตนดาร์ดชาร์เตอร์ด", "code": "scbt" },
+  { "bankId": "10", "bankName": "ออมสิน", "code": "gsb" },
+  { "bankId": "11", "bankName": "เพื่อการเกษตรและสหกรณ์", "code": "baac" },
+  { "bankId": "12", "bankName": "ซีไอเอ็มบีไทย", "code": "cimb" },
+  { "bankId": "13", "bankName": "แลนด์ แอนด์ เฮ้าส์", "code": "lhb" }
+]
