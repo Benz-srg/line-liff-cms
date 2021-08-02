@@ -79,13 +79,14 @@ const List = () => {
   const handleDelAbout = (id: string) => {
 
     Swal.fire({
-      title: 'Do you want to save the changes?',
+      title: 'คุณต้องการที่จะลบบทความนี้หรือไม่',
       showCancelButton: true,
-      confirmButtonText: `Save`,
+      confirmButtonText: `ใช่`,
+      cancelButtonText: `ยกเลิก`,
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        Swal.fire(`Ohh Yeahhh ${id}`, '', 'success')
+        Swal.fire(`คุณได้ลบบทความแล้ว`, '', 'success')
         dispatch(aboutAction.deleteAbout(id));
 
       }
