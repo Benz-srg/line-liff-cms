@@ -8,7 +8,7 @@ import ManageShipping from "@/components/shipping/manage";
 import Grid from "@material-ui/core/Grid";
 import * as shippingActions from "@/actions/shipping.action";
 
-const List = () => {
+const Shipping = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { shippingcost, isLoading, isMessage, isStatus } = useSelector(({ shipping }: any) => shipping);
@@ -16,8 +16,6 @@ const List = () => {
   const feedWithShipping = async () => {
     await dispatch(shippingActions.getShipping());
   };
-  // const { product } = useSelector((state: any) => state);
-  // const { abouts } = about;
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
   const [typeSnackbar, setTypeSnackbar] = React.useState("error");
   useEffect(() => {
@@ -51,13 +49,12 @@ const List = () => {
               <ManageShipping {...shippingcost} />
               : ""
           }
-
         </Grid>
       </Grid>
     </Layout>
   );
 };
 
-export default List;
+export default Shipping;
 
 

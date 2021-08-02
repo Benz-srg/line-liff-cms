@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Layout from "@/layout";
 import DataTable from "@/components/about/datatable";
 import Loading from "@/components/Loading";
-import * as productAction from "@/actions/product.action";
+import DeleteIcon from '@material-ui/icons/Delete';
 import * as aboutAction from "@/actions/about.action";
 import { useDispatch, useSelector } from "react-redux";
 import Snackbars from "@/components/Snackbar";
@@ -18,6 +18,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Swal from 'sweetalert2'
 import {
   Theme,
   createStyles,
@@ -71,6 +72,22 @@ const List = () => {
 
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
   const [typeSnackbar, setTypeSnackbar] = React.useState("error");
+  const handleDelAbout = (id: string) => {
+
+    Swal.fire({
+      title: 'Do you want to save the changes?',
+      showCancelButton: true,
+      confirmButtonText: `Save`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire(`Ohh Yeahhh ${id}`, '', 'success')
+        dispatch(aboutAction.deleteAbout(id));
+
+      }
+    })
+
+  }
   useEffect(() => {
     // dispatch(productAction.feedProduct());
     dispatch(aboutAction.feedAbout());
@@ -110,7 +127,7 @@ const List = () => {
                     <TableCell align="right">หัวข้อเรื่อง</TableCell>
                     <TableCell align="right">รายละเอียด</TableCell>
                     <TableCell align="right">รูปภาพ</TableCell>
-                    <TableCell align="right">จัดการ</TableCell>
+                    <TableCell colSpan={2} align="center">จัดการ</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -122,7 +139,18 @@ const List = () => {
                       <TableCell align="right">{about.detail}</TableCell>
                       <TableCell align="right">{about.image}</TableCell>
                       <TableCell align="right">{about.status}</TableCell>
-                      <TableCell align="right"><EditAbout data={about} /></TableCell>
+                      <TableCell align="right">
+                        <EditAbout data={about} />
+                      </TableCell>
+                      <TableCell align="right">
+                        <Button
+                          variant="contained"
+                          color="secondary"
+                          onClick={() => handleDelAbout(about._id)}
+                          startIcon={<DeleteIcon />}
+                        >
+                          ลบ
+                        </Button></TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
