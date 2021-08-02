@@ -24,6 +24,7 @@ interface AboutActionInterface {
   payload: any;
 }
 
+
 export const feedNewAbout = () => {
   return async (dispatch) => {
     const isLoading: AboutActionInterface = {
@@ -45,8 +46,6 @@ export const feedNewAbout = () => {
     }
   };
 };
-/*  */
-
 //fetching product
 export const feedAbout = () => {
   return async (dispatch) => {
@@ -175,6 +174,7 @@ export const deleteAbout = (ids: string) => {
         data: { id: ids },
       });
       const { status, message, abouts } = await deleteAbout.data;
+
       if (status === 201) {
         // if delete success backend will return status 201
         const payload = {

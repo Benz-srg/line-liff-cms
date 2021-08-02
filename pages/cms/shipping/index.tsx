@@ -9,6 +9,7 @@ import Grid from "@material-ui/core/Grid";
 import * as shippingActions from "@/actions/shipping.action";
 
 const Shipping = () => {
+
   const router = useRouter();
   const dispatch = useDispatch();
   const { shippingcost, isLoading, isMessage, isStatus } = useSelector(({ shipping }: any) => shipping);
@@ -56,5 +57,6 @@ const Shipping = () => {
 };
 
 export default Shipping;
+
 
 

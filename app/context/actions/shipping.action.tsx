@@ -1,4 +1,3 @@
-import { CollectionsOutlined } from "@material-ui/icons";
 import axios from "axios";
 import { urlApi } from "../urlapi";
 
@@ -105,15 +104,14 @@ export const AddShippingCost = (shipping: Shipping) => {
       const DataShipping = await axios.post(`${urlApi}shippingcost`, {
         ...shipping,
       });
-      const { status, message, shippingcost, cost } = await DataShipping.data;
+      const { status, message, shippingcost,cost } = await DataShipping.data;
       if (status === 201 || status === 200) {
         const isUploadingSuccess: shippingActionInterface = {
           type: shippingActiontype.UPLOADING_SHIPPING_COST_SUCCESS,
           payload: { status, message, shippingcost },
           cost: cost,
         };
-        console.log(status);
-        console.log(message);
+
         dispatch(isUploadingSuccess);
       } else {
         const isUploadingError: shippingActionInterface = {

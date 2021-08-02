@@ -4,6 +4,7 @@ import Layout from "@/layout";
 import DataTable from "@/components/about/datatable";
 import Loading from "@/components/Loading";
 import DeleteIcon from '@material-ui/icons/Delete';
+import * as productAction from "@/actions/product.action";
 import * as aboutAction from "@/actions/about.action";
 import { useDispatch, useSelector } from "react-redux";
 import Snackbars from "@/components/Snackbar";
@@ -72,6 +73,7 @@ const List = () => {
 
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
   const [typeSnackbar, setTypeSnackbar] = React.useState("error");
+
   const handleDelAbout = (id: string) => {
 
     Swal.fire({
@@ -88,6 +90,7 @@ const List = () => {
     })
 
   }
+
   useEffect(() => {
     // dispatch(productAction.feedProduct());
     dispatch(aboutAction.feedAbout());

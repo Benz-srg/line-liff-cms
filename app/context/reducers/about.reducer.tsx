@@ -49,7 +49,7 @@ const aboutReducer = (state = initialState, action) => {
         isLoading: false,
         isError: false,
         abouts: action.payload,
-        filterAbout: action.payload
+        filterAbout:action.payload
       };
 
     case aboutActionType.LOADING_ABOUTID_SUCCESS:
@@ -64,13 +64,13 @@ const aboutReducer = (state = initialState, action) => {
         isLoading: true,
         isError: false,
       };
-
     case aboutActionType.DELETE_ABOUTUS:
       return {
         ...state,
         isLoading: true,
         isError: false,
       };
+
     case aboutActionType.DELETE_ABOUTUS_SUCCESS:
       return {
         ...state,
@@ -120,7 +120,8 @@ const aboutReducer = (state = initialState, action) => {
         abouts: action.payload.abouts,
         isStatus: action.payload.status,
         isMessage: action.payload.message,
-        filterAbout: action.payload.abouts
+        filterAbout:action.payload.abouts
+
       };
 
     case aboutActionType.UPLOADING_ABOUTID_SUCCESS:
