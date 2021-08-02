@@ -23,10 +23,7 @@
       "@/context/*": ["app/context/*"]
     }
   },
-<<<<<<< HEAD
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "app/context/store.js", "app/components/product/EditerView.js", "app/components/about/EditerView.js"],
-=======
+
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "app/context/store.js", "app/components/product/EditerView.js", "app/components/about/EditerView.js", "next.config.ts"],
->>>>>>> 78891ddbcd52612ef4a2c284158db33ab1a394e3
   "exclude": ["node_modules"]
 }
