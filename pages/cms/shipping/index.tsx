@@ -7,6 +7,7 @@ import Snackbars from "@/components/Snackbar";
 import ManageShipping from "@/components/shipping/manage";
 import Grid from "@material-ui/core/Grid";
 import * as shippingActions from "@/actions/shipping.action";
+import Typography from "@material-ui/core/Typography";
 
 const Shipping = () => {
 
@@ -44,6 +45,7 @@ const Shipping = () => {
       <div>{router.pathname}</div>
       <Grid container spacing={1}>
         <Grid item xs={12}>
+        
           {
             shippingcost
               ?

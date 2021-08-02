@@ -8,6 +8,8 @@ import * as productAction from "@/actions/product.action";
 import * as aboutAction from "@/actions/about.action";
 import { useDispatch, useSelector } from "react-redux";
 import Snackbars from "@/components/Snackbar";
+import { urlApi } from "@/context/urlapi";
+import Typography from "@material-ui/core/Typography";
 import AddAbout from "@/components/about/AddAbout";
 import EditAbout from "@/components/about/EditAbout";
 import Paper from "@material-ui/core/Paper";
@@ -119,17 +121,25 @@ const List = () => {
       <div>{router.pathname}</div>
       <Grid container spacing={1}>
         <Grid item xs={12}>
+        
           <Paper elevation={1} className={classes.root}>
             <AddAbout />
             <br />
+            <Typography
+          variant="h6"
+          id="tableTitle"
+          component="div"
+        >
+          จัดการบทความ
+        </Typography>
+        <br/>
             <TableContainer component={Paper}>
               <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                   <TableRow>
-                    <TableCell>จัดการหน้าเกี่ยวกับเรา</TableCell>
-                    <TableCell align="right">หัวข้อเรื่อง</TableCell>
-                    <TableCell align="right">รายละเอียด</TableCell>
-                    <TableCell align="right">รูปภาพ</TableCell>
+                    <TableCell align="center">หัวข้อเรื่อง</TableCell>
+                    <TableCell align="left">รายละเอียด</TableCell>
+                    <TableCell align="center">รูปภาพ</TableCell>
                     <TableCell colSpan={2} align="center">จัดการ</TableCell>
                   </TableRow>
                 </TableHead>
@@ -139,13 +149,13 @@ const List = () => {
                       <TableCell component="th" scope="row">
                         {about.title}
                       </TableCell>
-                      <TableCell align="right">{about.detail}</TableCell>
-                      <TableCell align="right">{about.image}</TableCell>
-                      <TableCell align="right">{about.status}</TableCell>
-                      <TableCell align="right">
+                      <TableCell align="left">{about.detail}</TableCell>
+                      <TableCell align="left"><img src={`${urlApi}uploads/aboutus/${about.image}`} width="400" height="400" /></TableCell>
+
+                      <TableCell align="center">
                         <EditAbout data={about} />
                       </TableCell>
-                      <TableCell align="right">
+                      <TableCell align="center">
                         <Button
                           variant="contained"
                           color="secondary"
