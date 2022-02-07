@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     title: {
       display: "none",
-      color: "#39b549",
+      color: "#707070",
       [theme.breakpoints.up("sm")]: {
         display: "block",
       },
