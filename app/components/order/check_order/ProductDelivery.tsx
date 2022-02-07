@@ -171,10 +171,11 @@ const deliveryProduct = (props: any) => {
   const dispatch = useDispatch();
   const { orders, orderAddress } = useSelector(({ orders }: any) => orders);
   const [modalStyles] = useState(getModalStyle);
-
+  const { customers } = useSelector(({ customer }: any) => customer);
+  
   const feedWithId = async () => {
-    dispatch(orderActions.getAllShippingAddressWithId(user.id));
-    await dispatch(orderActions.getAllOrder(user.id));
+    dispatch(orderActions.getAllShippingAddressWithId(customers._id));
+    await dispatch(orderActions.getAllOrder(customers._id));
     console.log(orders, "actions actions");
   };
 
@@ -246,11 +247,11 @@ const deliveryProduct = (props: any) => {
     };
 
     const handleAddressSubmit = async () => {
-      console.log(user.id, selectedShipping, "184 send sub mit");
+      console.log(customers._id, selectedShipping, "184 send sub mit");
       await dispatch(
         orderActions.updateShippingAddress(props.orderId, selectedShipping)
       );
-      await dispatch(orderActions.getAllOrder(user.id));
+      await dispatch(orderActions.getAllOrder(customers._id));
       router.reload();
     };
     if (props.orderStatus == 3) {
