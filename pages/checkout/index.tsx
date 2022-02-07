@@ -107,7 +107,7 @@ const Checkout = ({ id, code }) => {
           cancelButtonText: "ไม่",
         }).then(async (result) => {
           if (result.isConfirmed) {
-            router.push({ pathname: `/profile/edit/60f54f56f13b0d0015512be3` });
+            router.push({ pathname: `/profile/edit/${customers._id}` });
           } else {
             router.push({ pathname: `/cart` });
           }
