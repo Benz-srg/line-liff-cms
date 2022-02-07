@@ -226,7 +226,7 @@ export default function PrimarySearchAppBar() {
                   aria-label="open drawer"
                   onClick={() => router.push({ pathname: "/" })}
                 >
-                  <Avatar src="/firstshoplogo08.png" />
+                  <Avatar src="/shoplogo.png" />
                 </IconButton>
                 {menuItems.map((menu, index) => (
                   <Button
