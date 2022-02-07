@@ -81,6 +81,7 @@ export default function DialogEditPayment({
   const feedWithId = () => {
     dispatch(allbankActions.getAllbanks());
   };
+  const { customers } = useSelector(({ customer }: any) => customer);
   const theme = useTheme();
   const classes = useStyles();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -91,7 +92,7 @@ export default function DialogEditPayment({
     bankName: bankId.bankName,
     bankAccName: bankAccName,
     bankAccNo: bankAccNo,
-    customerId: "60dc8456b6acdf24d0a806d2",
+    customerId: customers._id,
     paymentStatus: bankId.paymentStatus
   });
   const handleClickOpen = () => {
