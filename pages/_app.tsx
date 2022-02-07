@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <React.Fragment>
       <Head>
-        <title>FIRST SHOP</title>
+        <title>PET SHOP</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
