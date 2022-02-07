@@ -107,6 +107,7 @@ const Checkout = ({ id, code }) => {
           cancelButtonText: "ไม่",
         }).then(async (result) => {
           if (result.isConfirmed) {
+            console.log(customers._id)
             router.push({ pathname: `/profile/edit/${customers._id}` });
           } else {
             router.push({ pathname: `/cart` });
