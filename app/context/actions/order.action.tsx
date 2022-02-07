@@ -88,7 +88,7 @@ export const getAllOrder = (customerId: string) => {
     };
     dispatch(isLoading);
     try {
-      console.log(customerId, "inactions");
+      console.log(customerId, "Check inactions");
       const resultOrder = await axios.get(`${urlApi}order/${customerId}`);
       const { orders } = await resultOrder.data;
       console.log(orders);
