@@ -222,9 +222,9 @@ export default function PersistentDrawerLeft({ children }) {
           <div className={classes.titleStore}>
             <Avatar
               alt="Cindy Baker"
-              src="/firstshoplogo08.png"
+              src="/shoplogo.png"
             />
-            <Typography>FIRST SHOP</Typography>
+            <Typography>PET SHOP</Typography>
           </div>
         </div>
         <Divider />
