@@ -189,7 +189,7 @@ const deliveryProduct = (props: any) => {
     );
     const [openSwitch, setOpenSwitch] = useState(false);
     const [file, setFile] = useState(null);
-    const slipURL: string = `http://localhost:9000/uploads/${props.image}`;
+    const slipURL: string = `https://backend-liff.herokuapp.com/${props.image}`;
     const copyText = () => {
       handleOpen();
     };
