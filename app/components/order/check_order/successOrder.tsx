@@ -124,10 +124,11 @@ const useStyles = makeStyles((theme: Theme) =>
 const successOrder = (props: any) => {
   console.log(props);
   const classes = useStyles();
-  const [id, setId] = useState("60dc8456b6acdf24d0a806d2");
+  
   const dispatch = useDispatch();
   const { orders } = useSelector(({ orders }: any) => orders);
-
+  const { customer } = useSelector(({ customer }: any) => customer);
+  const [id, setId] = useState(customer._id);
   const [modalStyles] = useState(getModalStyle);
 
   const feedWithId = async () => {
