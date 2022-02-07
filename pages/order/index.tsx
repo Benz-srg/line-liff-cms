@@ -8,7 +8,7 @@ import {
   makeStyles,
   useTheme,
 } from "@material-ui/core/styles";
-import { useDispatch, useSelector } from "react-redux";
+
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 // import { useSelector, useDispatch } from "react-redux";
@@ -107,12 +107,12 @@ function a11yProps(index: any) {
 const Edit = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const { customers } = useSelector(({ customer }: any) => customer);
   const [value, setValue] = React.useState(0);
-  const [id, setId] = useState(customers._id);
+  const [id, setId] = useState("60dc8456b6acdf24d0a806d2");
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
+
   const handleChangeIndex = (index: number) => {
     setValue(index);
   };
