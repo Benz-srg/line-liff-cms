@@ -83,7 +83,7 @@ const SignIn = () => {
     e.preventDefault();
     const liff = (await import("@line/liff")).default;
     try {
-      await liff.init({ liffId: "1656163029-MZ9wqevR" });
+      await liff.init({ liffId: "1656870964-3j6xxkBb" });
     } catch (error) {
       console.error("liff init error", error.message);
     }
