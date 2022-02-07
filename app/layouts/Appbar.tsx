@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     title: {
       display: "none",
-      color: "#707070",
+      color: "#39b549",
       [theme.breakpoints.up("sm")]: {
         display: "block",
       },
@@ -226,7 +226,7 @@ export default function PrimarySearchAppBar() {
                   aria-label="open drawer"
                   onClick={() => router.push({ pathname: "/" })}
                 >
-                  <Avatar src="/shoplogo.png" />
+                  <Avatar src="/firstshoplogo08.png" />
                 </IconButton>
                 {menuItems.map((menu, index) => (
                   <Button
